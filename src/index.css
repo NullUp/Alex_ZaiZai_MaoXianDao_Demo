@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Nunito", "Baloo 2", "Noto Sans SC", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #1f1a3d;
+  background: #a7d8ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer base {
+  :root {
+    --cream: #fff7dc;
+    --ink: #1f1a3d;
+    --gold: #facc15;
+    --tomato: #f2553d;
+    --indigo-night: #22204c;
+    --sky-toy: #a7d8ff;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Baloo 2", "Nunito", "Noto Sans SC", sans-serif;
+    font-weight: 800;
+  }
+
+  .bg-cream {
+    background-color: var(--cream);
+  }
+
+  .bg-gold {
+    background-color: var(--gold);
+  }
+
+  .bg-tomato {
+    background-color: var(--tomato);
+  }
+
+  .bg-indigoNight {
+    background-color: var(--indigo-night);
+  }
+
+  .bg-skyToy {
+    background-color: var(--sky-toy);
+  }
+
+  .text-ink {
+    color: var(--ink);
+  }
+
+  .text-cream {
+    color: var(--cream);
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .shadow-toy {
+    box-shadow: 0 16px 0 rgb(31 26 61 / 0.08), 0 22px 40px rgb(31 26 61 / 0.18);
+  }
+
+  .shadow-modal {
+    box-shadow: 0 30px 0 rgb(31 26 61 / 0.08), 0 40px 90px rgb(31 26 61 / 0.35);
+  }
+}
+
+@layer components {
+  .toy-button {
+    pointer-events: auto;
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 999px;
+    border: 1px solid rgb(255 255 255 / 0.7);
+    background: rgb(255 247 220 / 0.88);
+    padding: 0 14px;
+    font-weight: 900;
+    color: var(--ink);
+    box-shadow: 0 10px 0 rgb(31 26 61 / 0.08), 0 16px 26px rgb(31 26 61 / 0.16);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+
+  .toy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 0 rgb(31 26 61 / 0.08), 0 20px 32px rgb(31 26 61 / 0.2);
+  }
+
+  .keycap {
+    display: inline-flex;
+    min-width: 34px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: white;
+    padding: 5px 9px;
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--ink);
+    box-shadow: inset 0 -3px 0 rgb(31 26 61 / 0.12);
+  }
+
+  .keycap.dark {
+    background: rgb(255 247 220 / 0.16);
+    color: var(--cream);
+    box-shadow: inset 0 -3px 0 rgb(255 255 255 / 0.12);
+  }
+
+  .hint-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 999px;
+    border: 1px solid rgb(255 255 255 / 0.7);
+    background: rgb(34 32 76 / 0.86);
+    padding: 10px 16px;
+    color: var(--cream);
+    font-weight: 900;
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+    transition: opacity 200ms ease, transform 200ms ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .hint-card.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .achievement-card {
+    pointer-events: none;
+    position: absolute;
+    right: 20px;
+    top: 88px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 24px;
+    border: 1px solid rgb(255 255 255 / 0.7);
+    background: var(--gold);
+    padding: 14px 18px;
+    font-weight: 900;
+    color: var(--ink);
+    box-shadow: 0 20px 48px rgb(31 26 61 / 0.24);
+    animation: pop-in 420ms cubic-bezier(.2, 1.4, .36, 1);
+  }
+
+  .primary-action,
+  .secondary-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 999px;
+    padding: 12px 18px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: transform 160ms ease;
+  }
+
+  .primary-action {
+    background: var(--tomato);
+    color: white;
+  }
+
+  .secondary-action {
+    border: 1px solid rgb(31 26 61 / 0.18);
+    background: white;
+    color: var(--ink);
+  }
+
+  .primary-action:hover,
+  .secondary-action:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.grain-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  opacity: 0.14;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgb(255 255 255 / 0.45) 0 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgb(31 26 61 / 0.18) 0 1px, transparent 1px);
+  background-size: 22px 22px, 27px 27px;
+  mix-blend-mode: soft-light;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateX(28px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@media (max-width: 720px) {
+  .toy-button {
+    min-height: 40px;
+    padding: 0 11px;
+  }
+}
