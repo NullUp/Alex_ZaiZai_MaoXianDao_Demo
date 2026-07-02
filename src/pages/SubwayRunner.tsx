@@ -1,7 +1,7 @@
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { RefObject } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Environment, Sky, Text } from '@react-three/drei'
+import { Environment, Sky } from '@react-three/drei'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { Group, MathUtils, PerspectiveCamera, Vector3 } from 'three'
@@ -178,10 +178,10 @@ function RunnerObstacleView({ obstacle, distance }: { obstacle: RunnerObstacle; 
     return (
       <group position={[x, 0.33, z]}>
         <mesh castShadow>
-          <boxGeometry args={[1.45, 0.58, 0.42]} />
+          <boxGeometry args={[1.45, 0.73, 0.42]} />
           <meshStandardMaterial color="#ffe45c" roughness={0.5} />
         </mesh>
-        <mesh position={[0, 0.38, 0]}>
+        <mesh position={[0, 0.47, 0]}>
           <boxGeometry args={[1.72, 0.16, 0.48]} />
           <meshStandardMaterial color="#ff4fb8" roughness={0.42} />
         </mesh>
@@ -191,17 +191,17 @@ function RunnerObstacleView({ obstacle, distance }: { obstacle: RunnerObstacle; 
 
   if (obstacle.kind === 'sign') {
     return (
-      <group position={[x, 1.15, z]}>
-        <mesh castShadow position={[0, 0.62, 0]}>
-          <boxGeometry args={[1.55, 0.24, 0.32]} />
+      <group position={[x, 0.8, z]}>
+        <mesh castShadow position={[0, 0.43, 0]}>
+          <boxGeometry args={[1.86, 0.24, 0.32]} />
           <meshStandardMaterial color="#ff4fb8" roughness={0.42} />
         </mesh>
-        <mesh castShadow position={[-0.62, -0.08, 0]}>
-          <boxGeometry args={[0.12, 1.26, 0.12]} />
+        <mesh castShadow position={[-0.74, -0.06, 0]}>
+          <boxGeometry args={[0.12, 0.88, 0.12]} />
           <meshStandardMaterial color="#fff8d6" roughness={0.45} />
         </mesh>
-        <mesh castShadow position={[0.62, -0.08, 0]}>
-          <boxGeometry args={[0.12, 1.26, 0.12]} />
+        <mesh castShadow position={[0.74, -0.06, 0]}>
+          <boxGeometry args={[0.12, 0.88, 0.12]} />
           <meshStandardMaterial color="#fff8d6" roughness={0.45} />
         </mesh>
       </group>
@@ -209,13 +209,13 @@ function RunnerObstacleView({ obstacle, distance }: { obstacle: RunnerObstacle; 
   }
 
   return (
-    <group position={[x, 0.54, z]} rotation={[0, 0.35, 0]}>
+    <group position={[x, 0.7, z]} rotation={[0, 0.35, 0]}>
       <mesh castShadow>
-        <boxGeometry args={[1.25, 1.08, 1.0]} />
+        <boxGeometry args={[1.63, 1.4, 1.3]} />
         <meshStandardMaterial color="#21d6a4" roughness={0.48} />
       </mesh>
-      <mesh position={[0, 0.26, 0.52]}>
-        <boxGeometry args={[0.85, 0.12, 0.04]} />
+      <mesh position={[0, 0.34, 0.68]}>
+        <boxGeometry args={[1.1, 0.16, 0.05]} />
         <meshBasicMaterial color="#7c3aed" transparent opacity={0.9} />
       </mesh>
     </group>
@@ -236,11 +236,11 @@ function RunnerCoinView({ coin, distance, collected }: { coin: RunnerCoin; dista
 
   return (
     <group ref={ref} position={[laneX(coin.lane), 1.08, z]}>
-      <mesh castShadow>
+      <mesh castShadow rotation={[Math.PI / 2, 0, 0]}>
         <cylinderGeometry args={[0.28, 0.28, 0.09, 18]} />
         <meshStandardMaterial color="#facc15" roughness={0.32} metalness={0.2} emissive="#f59e0b" emissiveIntensity={0.22} />
       </mesh>
-      <mesh position={[0, 0.055, 0]}>
+      <mesh position={[0, 0, 0.055]} rotation={[Math.PI / 2, 0, 0]}>
         <cylinderGeometry args={[0.13, 0.13, 0.02, 18]} />
         <meshStandardMaterial color="#fff7ad" roughness={0.25} />
       </mesh>
@@ -418,9 +418,6 @@ function RunnerWorld({
         return <RunnerCoinView key={coin.id} coin={coin} distance={distance} collected={collectedCoinsRef.current.has(cycleId)} />
       })}
 
-      <Text position={[0, 0.08, -9.5]} rotation={[-Math.PI / 2, 0, 0]} fontSize={0.7} color="#fff8d6">
-        ZAI ZAI RUN
-      </Text>
       <RunnerHero playerRef={playerRef} motionRef={motionRef} />
     </>
   )
