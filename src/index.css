@@ -173,6 +173,103 @@ a {
     animation: pop-in 420ms cubic-bezier(.2, 1.4, .36, 1);
   }
 
+  .loading-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+      radial-gradient(circle at 18% 22%, rgb(250 204 21 / 0.82), transparent 18%),
+      radial-gradient(circle at 82% 18%, rgb(242 85 61 / 0.58), transparent 18%),
+      radial-gradient(circle at 78% 82%, rgb(34 197 94 / 0.52), transparent 20%),
+      linear-gradient(180deg, #7ddcff 0%, #a7d8ff 48%, #74cfff 100%);
+    opacity: 1;
+    transition: opacity 500ms ease, transform 500ms ease;
+  }
+
+  .loading-screen.is-leaving {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+
+  .loading-card {
+    width: min(390px, 86vw);
+    overflow: hidden;
+    border-radius: 27px;
+    border: 3px solid white;
+    background: rgb(255 247 220 / 0.94);
+    padding: 21px;
+    color: var(--ink);
+    box-shadow: 0 17px 0 rgb(31 26 61 / 0.08), 0 26px 60px rgb(31 26 61 / 0.28);
+  }
+
+  .loading-badge {
+    display: inline-flex;
+    border-radius: 999px;
+    background: #f2553d;
+    padding: 5px 9px;
+    color: white;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+  }
+
+  .loading-title {
+    margin: 9px 0 0;
+    font-family: "Baloo 2", "Nunito", "Noto Sans SC", sans-serif;
+    font-size: clamp(33px, 7.5vw, 54px);
+    font-weight: 800;
+    line-height: 0.9;
+  }
+
+  .loading-subtitle {
+    margin: 9px 0 0;
+    color: rgb(31 26 61 / 0.68);
+    font-size: 13px;
+    font-weight: 900;
+  }
+
+  .loading-percent {
+    margin-top: 17px;
+    font-family: "Baloo 2", "Nunito", "Noto Sans SC", sans-serif;
+    font-size: clamp(36px, 8.25vw, 65px);
+    font-weight: 800;
+    line-height: 0.9;
+    color: #2563eb;
+    text-shadow: 0 4px 0 rgb(255 255 255 / 0.78);
+  }
+
+  .loading-track {
+    margin-top: 14px;
+    height: 18px;
+    overflow: hidden;
+    border-radius: 999px;
+    border: 2px solid rgb(31 26 61 / 0.14);
+    background: white;
+    box-shadow: inset 0 -3px 0 rgb(31 26 61 / 0.08);
+  }
+
+  .loading-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #22c55e 0%, #facc15 44%, #f2553d 100%);
+    box-shadow: inset 0 -4px 0 rgb(31 26 61 / 0.12);
+    transition: width 220ms ease;
+  }
+
+  .loading-meta {
+    margin-top: 9px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: rgb(31 26 61 / 0.56);
+    font-size: 10px;
+    font-weight: 900;
+  }
+
   .primary-action,
   .secondary-action {
     display: inline-flex;

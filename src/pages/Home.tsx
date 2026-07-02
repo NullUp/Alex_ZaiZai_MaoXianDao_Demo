@@ -1,14 +1,16 @@
-import { Suspense, useEffect } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { GameScene } from '@/game/GameScene'
 import { useKeyboardControls } from '@/hooks/useKeyboardControls'
 import { Hud } from '@/components/Hud'
 import { IntroOverlay } from '@/components/IntroOverlay'
+import { LoadingScreen } from '@/components/LoadingScreen'
 import { ProjectModal } from '@/components/ProjectModal'
 import { BackgroundMusic } from '@/components/BackgroundMusic'
 import { useGameStore } from '@/store/gameStore'
 
 export default function Home() {
+  const [isIslandReady, setIsIslandReady] = useState(false)
   const openNearbyProject = useGameStore((state) => state.openNearbyProject)
   const requestRespawn = useGameStore((state) => state.requestRespawn)
   const toggleHelp = useGameStore((state) => state.toggleHelp)
@@ -41,10 +43,16 @@ export default function Home() {
           <GameScene keysRef={keysRef} />
         </Suspense>
       </Canvas>
-      <IntroOverlay />
-      <Hud />
-      <ProjectModal />
-      <BackgroundMusic />
+      {isIslandReady ? (
+        <>
+          <IntroOverlay />
+          <Hud />
+          <ProjectModal />
+          <BackgroundMusic />
+        </>
+      ) : (
+        <LoadingScreen onComplete={() => setIsIslandReady(true)} />
+      )}
       <div className="grain-overlay" />
     </main>
   )
