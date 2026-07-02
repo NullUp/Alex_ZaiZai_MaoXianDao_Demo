@@ -1,6 +1,7 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "@/pages/Home";
 import CrossyRoad from "@/pages/CrossyRoad";
+import SubwayRunner from "@/pages/SubwayRunner";
 
 export default function App() {
   return (
@@ -8,6 +9,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/crossy-road" element={<CrossyRoad />} />
+        <Route path="/runner" element={<SubwayRunner />} />
         <Route path="/other" element={<div className="text-center text-xl">Other Page - Coming Soon</div>} />
       </Routes>
     </Router>

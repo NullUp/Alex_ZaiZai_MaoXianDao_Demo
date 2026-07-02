@@ -11,9 +11,11 @@ export function ProjectModal() {
   if (!project) return null
 
   const isCrossyRoad = project.action === 'crossy-road'
-  const startCrossyRoad = () => {
+  const isRunner = project.action === 'runner'
+  const isMiniGame = isCrossyRoad || isRunner
+  const startProject = () => {
     closeProject()
-    navigate('/crossy-road')
+    navigate(project.url)
   }
 
   return (
@@ -37,9 +39,9 @@ export function ProjectModal() {
             ))}
           </div>
           <div className="mt-7 flex flex-wrap gap-3">
-            {isCrossyRoad ? (
-              <button className="primary-action" onClick={startCrossyRoad}>
-                玩过马路
+            {isMiniGame ? (
+              <button className="primary-action" onClick={startProject}>
+                {isRunner ? '玩仔仔跑酷' : '玩过马路'}
                 <ExternalLink size={17} />
               </button>
             ) : (
@@ -49,7 +51,7 @@ export function ProjectModal() {
               </a>
             )}
             <button className="secondary-action" onClick={closeProject}>
-              {isCrossyRoad ? '先不玩' : '继续探索'}
+              {isMiniGame ? '先不玩' : '继续探索'}
             </button>
           </div>
         </div>

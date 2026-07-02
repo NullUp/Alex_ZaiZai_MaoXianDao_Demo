@@ -14,6 +14,17 @@ export const projects: ProjectItem[] = [
     displayModel: 'chicken',
   },
   {
+    id: 'runner',
+    title: '仔仔跑酷',
+    category: '小游戏',
+    description: '冲进霓虹跑道，左右变道、跳跃和下滑，躲开障碍并尽量收集更多金币。',
+    highlights: ['三车道跑酷', '跳跃下滑', '霓虹金币挑战'],
+    url: '/runner',
+    position: [-5, 0, 4],
+    color: '#22d3ee',
+    action: 'runner',
+  },
+  {
     id: 'portfolio',
     title: '星光作品集',
     category: '互动展示',

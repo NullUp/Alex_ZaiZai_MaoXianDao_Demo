@@ -9,7 +9,7 @@ export type ProjectItem = {
   url: string
   position: VectorTuple
   color: string
-  action?: 'crossy-road'
+  action?: 'crossy-road' | 'runner'
   displayModel?: 'panel' | 'chicken'
 }
 
